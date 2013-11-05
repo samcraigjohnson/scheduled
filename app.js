@@ -8,6 +8,7 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var SchoolModel = require('./models/SchoolModel').SchoolModel;
 
 var app = express();
 
@@ -27,7 +28,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+var schoolModel = new SchoolModel();
+
+app.get('/', function(req, res){
+    schoolModel.findAll(function(err, docs){
+	res.send(docs);
+    });
+});//routes.index);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
