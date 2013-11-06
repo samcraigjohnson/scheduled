@@ -32,7 +32,10 @@ var schoolModel = new SchoolModel();
 
 app.get('/', function(req, res){
     schoolModel.findAll(function(err, docs){
-	res.send(docs);
+	res.render('index', {
+	    title: 'Schooltime',
+	    schools:docs    
+	});
     });
 });//routes.index);
 app.get('/users', user.list);
