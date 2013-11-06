@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  #schools
+  - each school in schools
+    div.school
+      div.s_length= school.s_length
+      div.name
+        a(href="/blog/"+school._id)!= school.name
+      div.location.
+        State: #{school.loc_state}
+
