@@ -9,6 +9,9 @@ module.exports = BaseController.extend({
       title: "Administration",
       content: "Welcome to the control panel"
     });
+  },
+  authorize: function(req){
+    
   }
 });
 

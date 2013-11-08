@@ -2,6 +2,29 @@ doctype 5
 html
   head
     title= title
+    link(rel='stylesheet', href='/flat-ui/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/flat-ui/css/flat-ui.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    //header section
+    header.navbar.navbar-inverse.navbar-fixed-top#home-nav(role='banner')
+      div.container
+        div.navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target=".navbar-collapse")
+            span.sr-only
+              | Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href="#")
+            | CLASSTI.ME
+        div.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href="#home")
+                | Home
+
+    div.container
+      block content
+    script(src='/javascripts/jquery-1.10.2.min.js')
+    script(src='/flat-ui/bootstrap/js/application.js')

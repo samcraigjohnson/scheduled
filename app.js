@@ -4,15 +4,12 @@
  */
 
 var express = require('express');
-var controllers = require('./controllers');
-//var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var config = require('./config')();
 var mongoose = require('mongoose');
 
 //models
-var School = require('./models/school');
 
 var app = express();
 
@@ -35,34 +32,8 @@ if ('development' == app.get('env')) {
 //connect to the db
 mongoose.connect('mongodb://' + config.mongo.host + '/' + config.mongo.database);
 
-//create dummy school info
-School.remove({loc_state: "IN"}, function (err){
-  if(err){
-    console.log("error: " + err);  
-  }  
-});
-
-new School({name: "PT", gpa: 4.0, s_length: 5, loc_state: "IN"}).save();
-new School({name: "Hancock", gpa: 4.5, s_length: 7, loc_state: "IN"}).save();
-//
-
-
-app.get('/', function(req, res){
-    School.find({loc_state: "IN"}, function(err, docs){
-	    res.render('index', {
-	      title: 'classti.me',
-	      schools:docs    
-	    });
-      console.log(docs.length);
-    });
-});//routes.index);
-//app.get('/users', user.list);
-//using controllers here
-var Admin = require('./controllers/Admin');
-app.all('/admin*', function(req, res, next){
- Admin.run(req, res, next);
-}); 
-
+//route all requests through routes.js
+var routes = require('./routes')(app);
 
 //get database instance
 var db = mongoose.connection;
