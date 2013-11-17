@@ -3,5 +3,5 @@ extends layout
 block content
   h1= title
   - each student in students
-    div.name= student.f_name
-    div.year= student.year
+    div.name #{student.f_name}
+    div.year #{student.year}

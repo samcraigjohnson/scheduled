@@ -1,8 +1,8 @@
 var Student = require("./models/Student");
 var School = require("./models/School");
 
-School.find({}).remove(); 
-Student.find({}).remove(); 
+School.remove({}, function(err){ console.log(err);});
+Student.remove({}, function(err){ console.log(err);});
 
 //fake school data
 var pt= new School({ _id:0, name: "Park Tudor", gpa: 4.0, s_length: 7, loc_state: "IN"});

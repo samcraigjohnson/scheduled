@@ -8,10 +8,16 @@ module.exports = BaseController.extend({
   run: function(req, res, next){
     var v = new View(res, 'students');
     School.findOne({ _id: 0 }, function(err, school){
-      v.render({
-        title: "Students from " + school.name + ":",
-        students: school.students,
+      console.log("displaying students from school:" + school.name);
+      
+      Student.find({_school: school.id}).exec(function (err, students){
+        console.log("attempting to render students:" + students);
+        v.render({
+          title: "Students from " + school.name + ":",
+          students: students,
+        });
       });
+
     });
   },
   authorize: function(req){

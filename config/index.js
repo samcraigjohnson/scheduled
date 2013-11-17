@@ -4,7 +4,7 @@ var config = {
     port: 3000,
     mongo: {
       host: 'localhost',
-      database: 'test'
+      database: 'classtime_test'
     }
   },
   staging: {
