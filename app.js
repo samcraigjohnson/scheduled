@@ -37,12 +37,12 @@ var routes = require('./routes')(app);
 
 //get database instance
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'))
+db.on('error', console.error.bind(console, 'connection error:'));
 
 //start server once database connection has been made
 db.once('open', function callback() {
-  console.log("adding in fake data...")
-  require('./fake_data.js');
+  //console.log("adding in fake data...")
+  //require('./fake_data.js');
   http.createServer(app).listen(config.port, function(){
     console.log('Express server listening on port ' + config.port);
   });

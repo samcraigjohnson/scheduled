@@ -20,6 +20,11 @@ module.exports = BaseController.extend({
 
     });
   },
+  create: function(req, res, next){
+      var v = new View(res, "addStudent");
+      console.log("attempting to render new student page");
+      v.render({});
+  },
   authorize: function(req){
     
   }

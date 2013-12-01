@@ -1,9 +1,9 @@
 var config = {
   local: {
     mode: 'local',
-    port: 3000,
+    port: process.env.PORT,
     mongo: {
-      host: 'localhost',
+      host: process.env.IP,
       database: 'classtime_test'
     }
   },
