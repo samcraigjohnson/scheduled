@@ -21,10 +21,18 @@ module.exports = BaseController.extend({
     });
   },
   create: function(req, res, next){
-      var v = new View(res, "addStudent");
-      console.log("attempting to render new student page");
-      v.render({});
+    var v = new View(res, "addStudent");
+    console.log("attempting to render new student page");
+    v.render({});
   },
+  
+  add: function(req, res, next){
+    req.body._school = 0;
+    var student = new Student(req.body);
+    student.save();
+    res.redirect('/students');
+  },
+  
   authorize: function(req){
     
   }
