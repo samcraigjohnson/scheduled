@@ -1,16 +1,20 @@
 extends layout
 
 block content
-    h1.
+    h2.
         Create new student:
         
-    form(role="form")
+    form#student-form(role="form")
         div.form-group
             label(for="fName")
-                input(type="text", class="form-control", id="fName", placeholder="first name")
+                input(type="text", class="form-control", id="fName", name="f_name", placeholder="first name")
         div.form-group
             label(for="sName")
-                input(type="text", class="form-control", id="lName", placeholder="last name")
+                input(type="text", class="form-control", id="lName", name="l_name", placeholder="last name")
         div.form-group
             label(for="year")
-                input(type="text", class="form-control", id="year", placeholder="school year")
+                input(type="text", class="form-control", id="year", name="year", placeholder="school year")
+        
+        button.btn.btn-default(type="submit") Submit
+block scripts
+    script(src='javascripts/addStudent.js')
